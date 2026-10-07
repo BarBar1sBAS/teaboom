@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
@@ -13,11 +13,16 @@
   <body>
     <main>
       <article class="product" data-product>
+        <header class="product__header">
+          <p class="product__category">Ароматизированный улун</p>
+          <h1 class="product__title">Ананасовый улун</h1>
+        </header>
         <figure class="product__media">
           <img
             src="./img/product-800.webp"
             srcset="./img/product-480.webp 480w, ./img/product-800.webp 800w"
-            sizes="(max-width: 47.99rem) calc(100vw - 2rem), min(36.25rem, 50vw)"
+            sizes="(max-width: 47.99rem) 220px, (max-width: 63.99rem) calc((100vw - 56px) / 2), min(560px, calc((100vw - 72px) / 2))"
+            fetchpriority="high"
             width="800"
             height="800"
             alt="Крупный скрученный лист ананасового улуна с цукатами"
@@ -25,9 +30,6 @@
         </figure>
 
         <div class="product__info">
-          <p class="product__category">Ароматизированный улун</p>
-          <h1 class="product__title">Ананасовый улун</h1>
-
           <fieldset class="pack" data-packs>
             <legend class="pack__legend">Фасовка</legend>
             <div class="pack__list">
@@ -42,15 +44,30 @@
                 <span class="pack__chip">100 г</span>
               </label>
               <label class="pack__item">
-                <input class="visually-hidden" type="radio" name="pack" value="500" />
+                <input
+                  class="visually-hidden"
+                  type="radio"
+                  name="pack"
+                  value="500"
+                />
                 <span class="pack__chip">500 г</span>
               </label>
               <label class="pack__item">
-                <input class="visually-hidden" type="radio" name="pack" value="1000" />
+                <input
+                  class="visually-hidden"
+                  type="radio"
+                  name="pack"
+                  value="1000"
+                />
                 <span class="pack__chip">1000 г</span>
               </label>
               <label class="pack__item">
-                <input class="visually-hidden" type="radio" name="pack" value="5000" />
+                <input
+                  class="visually-hidden"
+                  type="radio"
+                  name="pack"
+                  value="5000"
+                />
                 <span class="pack__chip">5000 г</span>
               </label>
             </div>
@@ -59,26 +76,34 @@
           <p class="product__sku">арт. <span data-sku>01306</span></p>
 
           <div class="product__buy">
-            <p class="price" aria-live="polite">
-              <span class="price__current" data-price>326,40&nbsp;₽</span>
-              <del class="price__old" data-old-price>349,20&nbsp;₽</del>
+            <p class="price" aria-live="polite" aria-atomic="true">
+              <span class="visually-hidden">Цена: </span
+              ><span class="price__current" data-price>326,40&nbsp;₽</span>
+              <span class="visually-hidden">Прежняя цена: </span
+              ><del class="price__old" data-old-price>349,20&nbsp;₽</del>
             </p>
-            <button class="btn" type="button" data-cart aria-pressed="false">
-              В корзину
-            </button>
+            <button class="btn" type="button" data-cart>В корзину</button>
           </div>
-
-          <section class="product__desc">
-            <h2>Описание</h2>
-            <p>
-              Состав: китайский бирюзовый чай, цукаты, натуральные ароматические
-              масла. Светлый фуцзяньский улун с ароматом ананаса. В сухом виде
-              это красивый крупный лист изумрудного цвета, скруткой напоминающий
-              Те Гуань Инь. В прогретой посуде слышны свежая весенняя зелень и
-              спелый ананас.
-            </p>
-          </section>
+          <p
+            class="product__status"
+            data-status
+            role="status"
+            aria-atomic="true"
+          ></p>
         </div>
+
+        <section class="product__desc">
+          <h2>Описание</h2>
+          <p>
+            Светлый фуцзяньский улун с ароматом ананаса. Крупный скрученный лист
+            раскрывается при заваривании, отдавая аромат свежей зелени и спелого
+            ананаса.
+          </p>
+          <p>
+            <strong>Состав:</strong> китайский бирюзовый чай, цукаты,
+            натуральные ароматические масла.
+          </p>
+        </section>
       </article>
     </main>
 
