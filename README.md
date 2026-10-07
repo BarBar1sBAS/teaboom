@@ -14,7 +14,7 @@ npm run build    # статика в dist/
 npm run preview
 ```
 
-Выкладка: содержимое `dist/` на любой статический хостинг. В `vite.config.js` стоит `base: './'`.
+Выкладка: GitHub Actions собирает и публикует сайт на GitHub Pages при каждом push в `main`. В `vite.config.js` стоит `base: './'`.
 
 ## Почему так
 
