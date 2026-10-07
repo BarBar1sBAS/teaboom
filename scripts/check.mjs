@@ -1,26 +1,19 @@
 import assert from "node:assert/strict";
 import { formatPrice, getPack, packs } from "../src/product.js";
 
-assert.equal(packs.length, 4);
-assert.deepEqual(
-  packs.map((pack) => pack.sku),
-  ["01306", "01307", "01308", "01309"],
-);
+const expected = [
+  ["100", "01306", 32640, 34920, "326,40", "349,20"],
+  ["500", "01307", 143200, 164600, "1 432", "1 646"],
+  ["1000", "01308", 206400, 259200, "2 064", "2 592"],
+  ["5000", "01309", 632000, 871000, "6 320", "8 710"],
+];
 
-assert.equal(formatPrice(32640), "326,40\u00A0₽");
-assert.match(formatPrice(143200), /1\s432\u00A0₽/);
-assert.match(formatPrice(632000), /6\s320\u00A0₽/);
-
-const pack = getPack("1000");
-assert.equal(pack.sku, "01308");
-assert.equal(pack.price, 206400);
-assert.equal(pack.oldPrice, 259200);
-assert.ok(pack.oldPrice > pack.price);
-
-assert.equal(getPack("missing").id, "100");
-
-for (const item of packs) {
-  assert.ok(item.oldPrice > item.price, `${item.id} must keep a discount`);
+assert.deepEqual(packs.map(({ id }) => id), expected.map(([id]) => id));
+for (const [id, sku, price, oldPrice, formatted, oldFormatted] of expected) {
+  assert.deepEqual(getPack(id), { id, sku, price, oldPrice });
+  assert.equal(formatPrice(price), `${formatted}\u00a0₽`);
+  assert.equal(formatPrice(oldPrice), `${oldFormatted}\u00a0₽`);
 }
-
+assert.equal(formatPrice(105), "1,05\u00a0₽");
+assert.equal(getPack("missing"), packs[0]);
 console.log("ok");
