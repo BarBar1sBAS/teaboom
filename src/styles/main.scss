@@ -142,7 +142,8 @@ input {
 .pack__item input:checked + .pack__chip::after {
   visibility: visible;
 }
-.pack__item input:focus-visible + .pack__chip,
+// Keep native radio focus visible after arrow-key changes in WebKit.
+.pack__item input:focus + .pack__chip,
 .btn:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;

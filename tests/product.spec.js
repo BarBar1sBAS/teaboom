@@ -49,6 +49,7 @@ test("keyboard selection has visible focus and no motion", async ({ page }) => {
   for (const pack of [...expected.slice(1), expected[0]]) {
     await page.keyboard.press("ArrowRight");
     await expectPack(page, pack);
+    await expect(page.locator(`input[value="${pack.id}"]`)).toBeFocused();
     const chip = page.locator("input:checked + .pack__chip");
     await expect(chip).toHaveCSS("outline-style", "solid");
     await expect(chip).toHaveCSS("outline-width", "2px");

@@ -26,6 +26,7 @@ if (selectedInput && applyPack(selectedInput.value)) {
     } else {
       selectedInput.checked = true;
     }
+    selectedInput.focus({ preventScroll: true });
   });
   packStatus.hidden = true;
   packs.removeAttribute("aria-describedby");
