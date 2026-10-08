@@ -46,8 +46,14 @@ test("keyboard selection has visible focus and no motion", async ({ page }) => {
   await page.goto("/");
   await page.keyboard.press("Tab");
   await expect(page.getByRole("radio", { name: "100 г", exact: true })).toBeFocused();
-  for (const pack of [...expected.slice(1), expected[0]]) {
-    await page.keyboard.press("ArrowRight");
+  // Native radio groups differ across browsers at the first/last option.
+  const steps = [
+    ["ArrowRight", 1], ["ArrowRight", 2], ["ArrowRight", 3],
+    ["ArrowLeft", 2], ["ArrowLeft", 1], ["ArrowLeft", 0],
+  ];
+  for (const [key, index] of steps) {
+    const pack = expected[index];
+    await page.keyboard.press(key);
     await expectPack(page, pack);
     await expect(page.locator(`input[value="${pack.id}"]`)).toBeFocused();
     const chip = page.locator("input:checked + .pack__chip");
