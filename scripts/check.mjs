@@ -15,5 +15,6 @@ for (const [id, sku, price, oldPrice, formatted, oldFormatted] of expected) {
   assert.equal(formatPrice(oldPrice), `${oldFormatted}\u00a0₽`);
 }
 assert.equal(formatPrice(105), "1,05\u00a0₽");
-assert.equal(getPack("missing"), packs[0]);
+assert.equal(getPack("missing"), undefined);
+assert.equal(getPack(undefined), undefined);
 console.log("ok");

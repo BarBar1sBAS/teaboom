@@ -6,12 +6,14 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "node scripts/check.mjs"
+    "check": "node scripts/check.mjs",
+    "test:e2e": "playwright test"
   },
   "engines": {
-    "node": ">=20"
+    "node": "^24.12.0"
   },
   "devDependencies": {
+    "@playwright/test": "1.64.0",
     "sass": "^1.93.0",
     "vite": "^7.1.5"
   }

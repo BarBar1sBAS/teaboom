@@ -30,7 +30,7 @@
         </figure>
 
         <div class="product__info">
-          <fieldset class="pack" data-packs>
+          <fieldset class="pack" data-packs disabled aria-describedby="pack-status">
             <legend class="pack__legend">Фасовка</legend>
             <div class="pack__list">
               <label class="pack__item">
@@ -38,6 +38,7 @@
                   class="visually-hidden"
                   type="radio"
                   name="pack"
+                  autocomplete="off"
                   value="100"
                   checked
                 />
@@ -48,6 +49,7 @@
                   class="visually-hidden"
                   type="radio"
                   name="pack"
+                  autocomplete="off"
                   value="500"
                 />
                 <span class="pack__chip">500 г</span>
@@ -57,6 +59,7 @@
                   class="visually-hidden"
                   type="radio"
                   name="pack"
+                  autocomplete="off"
                   value="1000"
                 />
                 <span class="pack__chip">1000 г</span>
@@ -66,12 +69,16 @@
                   class="visually-hidden"
                   type="radio"
                   name="pack"
+                  autocomplete="off"
                   value="5000"
                 />
                 <span class="pack__chip">5000 г</span>
               </label>
             </div>
           </fieldset>
+          <p class="pack__status" id="pack-status">
+            Выбор фасовки недоступен. Показана цена за 100 г.
+          </p>
 
           <p class="product__sku">арт. <span data-sku>01306</span></p>
 

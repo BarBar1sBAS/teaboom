@@ -14,5 +14,5 @@ export function formatPrice(kopecks) {
 }
 
 export function getPack(id) {
-  return packs.find((pack) => pack.id === id) ?? packs[0];
+  return packs.find((pack) => pack.id === id);
 }
